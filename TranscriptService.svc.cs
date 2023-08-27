@@ -9,6 +9,8 @@ namespace FileTranscriptionService
         public string[] GetTranscription(FileTranscription fileTranscription)
         {
             TranscriptionServiceMock transcriptionServiceMock = new TranscriptionServiceMock();
+
+            //En un caso real obviamente recibiríamos los bytes del archivo no la ruta, pero para emular la funcionalidad me he basado sólo en el título
             TranscriptionResult transcriptionResult = transcriptionServiceMock.TranscriptFile(fileTranscription.FilePath);
             fileTranscription.Result = transcriptionResult.TranscriptionStatus.Equals(TranscriptionStatusEnum.Ok) ? transcriptionResult.Result : string.Empty;
 
